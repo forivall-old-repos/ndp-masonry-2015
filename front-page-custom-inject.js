@@ -27,6 +27,13 @@ twttr.events.bind('loaded', function() {
   }, 100);
 });
 
+var $loadMoreLink = $('.candidate-timeline2-load-more-link');
+$loadMoreLink.on('click', function() {
+  setTimeout(function() {
+    $timelineContent.masonry();
+  }, 100);
+})
+
 });
 
 }();
