@@ -47,6 +47,12 @@ $loadMoreLink.on('click', function() {
   }, 100);
 });
 
+// since our layout handles more items better, it would be nice to automatically
+// load more items, especially since loading the custom content takes up
+// a slot. However, it's currently kinda buggy. :(
+
+// $loadMoreLink.trigger('click');
+
 function layoutOnTwitterLoaded() {
   if (!window.twttr) {
     setTimeout(layoutOnTwitterLoaded, 100);
