@@ -1,0 +1,3 @@
+proxy: 'http://amandeepnijjar.ndp.ca/'
+root: './chrome-saved'
+port: 8001
