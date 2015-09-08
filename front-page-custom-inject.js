@@ -22,7 +22,6 @@ $timelineContent.masonry({
   columnWidth: 500,
   isFitWidth: true,
   transitionDuration: 0,
-  percentPosition: true,
   itemSelector: '.candidate-timeline2-item',
   stamp: $inlineMenu
 });
