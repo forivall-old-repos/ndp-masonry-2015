@@ -56,6 +56,8 @@ function layoutOnTwitterLoaded() {
   var twttr = window.twttr;
   twttr.events.bind('loaded', function() {
     setTimeout(function() {
+      var $currentMasonryItems = $timelineContent.masonry('getItemElements');
+      $timelineContent.masonry('addItems', $timelineContent.find('.timeline-item-hidden').not($currentMasonryItems));
       $timelineContent.masonry('layout');
     }, 100);
   });
