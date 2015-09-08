@@ -11,13 +11,21 @@ function loadStylesheet(href, callback) {
 loadStylesheet('front-page-custom.css', function() {
 
 var $timelineContent = $('#page_customization_anchor').closest('.timeline-content');
+var $sidebarNav = $('.block--sidebar-page-nav');
+var $inlineMenu = $('<div class="candidate-timeline2-inline-menu"><h2>Menu</h2></div>');
+$inlineMenu.append($sidebarNav.clone());
+$timelineContent.prepend($inlineMenu);
+
 $timelineContent.masonry({
   // columnWidth: 100,
   columnWidth: 500,
+  // columnWidth: '.candidate-timeline2-item',
   isFitWidth: true,
-  gutter: 5,
+  // gutter: -1,
   transitionDuration: 0,
-  itemSelector: '.candidate-timeline2-item'
+  percentPosition: true,
+  itemSelector: '.candidate-timeline2-item',
+  stamp: $inlineMenu
 });
 
 var twttr = window.twttr;
