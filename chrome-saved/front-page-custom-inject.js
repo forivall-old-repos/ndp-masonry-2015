@@ -1,0 +1,1 @@
+../front-page-custom-inject.js
