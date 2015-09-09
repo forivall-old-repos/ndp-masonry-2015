@@ -21,8 +21,8 @@ function loadScript(src, callback) {
   el.addEventListener('load', callback);
   document.body.appendChild(el);
 }
-loadScript('https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', function() {
-loadStylesheet('/sites/default/files/multisite/648138/IMCE/front-page-custom.css', function() {
+// loadScript('https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', function() {
+// loadStylesheet('/sites/default/files/multisite/648138/IMCE/front-page-custom.css', function() {
 
 var $timelineContent = $('#xJs').closest('.timeline-content');
 var $sidebarNav = $('.block--sidebar-page-nav');
@@ -32,44 +32,7 @@ $inlineMenu.append($sidebarNav.clone());
 // $timelineContent.prepend($inlineMenu);
 $('.block--candidate-timeline2').prepend($inlineMenu);
 
-$timelineContent.masonry({
-  columnWidth: 500,
-  isFitWidth: true,
-  transitionDuration: 0,
-  itemSelector: '.candidate-timeline2-item',
-  stamp: $inlineMenu
-});
-
-var $loadMoreLink = $('.candidate-timeline2-load-more-link');
-$loadMoreLink.on('click', function() {
-  setTimeout(function() {
-    $timelineContent.masonry('layout');
-  }, 100);
-});
-
-// since our layout handles more items better, it would be nice to automatically
-// load more items, especially since loading the custom content takes up
-// a slot. However, it's currently kinda buggy. :(
-
-// $loadMoreLink.trigger('click');
-
-function layoutOnTwitterLoaded() {
-  if (!window.twttr) {
-    setTimeout(layoutOnTwitterLoaded, 100);
-    return;
-  }
-  $timelineContent.masonry('layout');
-  var twttr = window.twttr;
-  twttr.events.bind('loaded', function() {
-    setTimeout(function() {
-      var $currentMasonryItems = $timelineContent.masonry('getItemElements');
-      $timelineContent.masonry('addItems', $timelineContent.find('.timeline-item-hidden').not($currentMasonryItems));
-      $timelineContent.masonry('layout');
-    }, 100);
-  });
-}
-layoutOnTwitterLoaded();
-
-});});
+// });
+// });
 
 }();

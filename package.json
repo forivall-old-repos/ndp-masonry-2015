@@ -2,5 +2,8 @@
   "dependencies": {
     "express": "^4.13.3",
     "express-http-proxy": "^0.6.0"
+  },
+  "scripts": {
+    "start": "babel-node test-server.js"
   }
 }
