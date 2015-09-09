@@ -1,9 +1,14 @@
 {
   "dependencies": {
     "express": "^4.13.3",
-    "express-http-proxy": "^0.6.0"
+    "express-http-proxy": "^0.6.0",
+    "twitter-text": "^1.13.2"
   },
   "scripts": {
-    "start": "babel-node test-server.js"
+    "start": "watchify client/main.js -o xJs.js --verbose & babel-node test-server.js",
+    "client-build": "browserify client/main.js -o xJs.js --verbose"
+  },
+  "devDependencies": {
+    "watchify": "^3.4.0"
   }
 }
