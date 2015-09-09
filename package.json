@@ -5,8 +5,8 @@
     "twitter-text": "^1.13.2"
   },
   "scripts": {
-    "start": "watchify client/main.js -o xJs.js --verbose & babel-node test-server.js",
-    "client-build": "browserify client/main.js -o xJs.js --verbose"
+    "start": "watchify client/main.js -o xjs.js --verbose & babel-node test-server.js",
+    "client-build": "browserify client/main.js -o xjs.js --verbose"
   },
   "devDependencies": {
     "watchify": "^3.4.0"
