@@ -7,9 +7,12 @@
   },
   "scripts": {
     "start": "watchify client/main.js -o xjs.js --verbose & babel-node test-server.js",
-    "client-build": "browserify client/main.js -o xjs.js --verbose"
+    "client-build": "browserify client/main.js -o xjs.js --verbose",
+    "client-build-release": "browserify  -g uglifyify client/main.js -o xjs.js --verbose && echo '// source code at: https://github.com/forivall-old-repos/ndp-masonry-2015' >> xjs.js",
+    "release-qa": "babel-node test-server.js"
   },
   "devDependencies": {
+    "uglifyify": "^3.0.1",
     "watchify": "^3.4.0"
   }
 }
