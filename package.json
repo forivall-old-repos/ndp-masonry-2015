@@ -2,7 +2,9 @@
   "dependencies": {
     "express": "^4.13.3",
     "express-http-proxy": "^0.6.0",
+    "humanize-url": "^1.0.1",
     "nimble": "0.0.2",
+    "truncate-url": "^0.1.1",
     "twitter-text": "^1.13.2"
   },
   "scripts": {

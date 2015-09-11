@@ -2,6 +2,13 @@
 
 var ni = require('nimble');
 var tt = require('twitter-text');
+// var humanizeUrl = require('humanize-url');
+// var truncateUrl = require('truncate-url');
+function displayUrl(url) {
+  // return humanizeUrl(truncateUrl(url.replace(/\/?(\?[^?]*)?$/,''), 40));
+  var result, shurl = url.replace(/^https?:\/\/(www\.)?/,'').replace(/\/?(\?[^?]*)?$/,'');
+  return ((shurl.length > 40) && (result = /^(.{0,40}\/)/.exec(shurl))) ? result[1] + '…' : shurl;
+}
 
 var $ = window.jQuery;
 // // wrap $.ajax in standard node style callbacks
@@ -23,7 +30,7 @@ function getUrlEntities(text, callback) {
       // ignore errors
       if (err) { return callback(null, link); }
       link.expanded_url = response['long-url'];
-      link.display_url = response['long-url'].replace(/^https?:\/\//,'').replace(/\/?(\?[^?]*)?$/,'');
+      link.display_url = displayUrl(response['long-url']);
       callback(null, link);
     });
   }, callback);
@@ -48,6 +55,13 @@ function autolinkTweetText() {
       $this.html(text);
     });
   });
+  // replace second retweet button with open tweet link
+  $('.tw-share').each(function() {
+    var $this = $(this);
+    $this.removeClass('tw-share').addClass('tw-view-tweet');
+    var $a = $this.find('a');
+    $a.attr('href', $a.attr('href').replace('intent/retweet?tweet_id=', 'statuses/'));
+  })
 }
 module.exports.autolinkTweetText = autolinkTweetText;
 
