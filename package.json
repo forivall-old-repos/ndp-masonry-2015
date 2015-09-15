@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "brfs": "^1.4.1",
+    "browserify-css": "^0.7.1",
     "express": "^4.13.3",
     "express-http-proxy": "^0.6.0",
     "humanize-url": "^1.0.1",
@@ -8,9 +10,9 @@
     "twitter-text": "^1.13.2"
   },
   "scripts": {
-    "start": "watchify client/main.js -o xjs.js --verbose & babel-node test-server.js",
-    "client-build": "browserify client/main.js -o xjs.js --verbose",
-    "client-build-release": "browserify  -g uglifyify client/main.js -o xjs.js --verbose && echo '// source code at: https://github.com/forivall-old-repos/ndp-masonry-2015' >> xjs.js",
+    "start": "watchify client/main.js -t browserify-css -o xjs.js --verbose & babel-node test-server.js",
+    "client-build": "browserify client/main.js -t browserify-css -o xjs.js --verbose",
+    "client-build-release": "browserify -t browserify-css -g uglifyify client/main.js -o xjs.js --verbose && echo '// source code at: https://github.com/forivall-old-repos/ndp-masonry-2015' >> xjs.js",
     "release-qa": "babel-node test-server.js"
   },
   "devDependencies": {
